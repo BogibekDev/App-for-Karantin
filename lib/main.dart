@@ -18,6 +18,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      themeMode: ThemeMode.system,
+      darkTheme: ThemeData.dark(useMaterial3: true),
       home: const HomePage(),
       routes: {
         LoginPage.route: (context) => const LoginPage(),

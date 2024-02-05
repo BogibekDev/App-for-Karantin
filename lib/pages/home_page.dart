@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:employees/pages/add_page.dart';
 import 'package:employees/pages/detail_page.dart';
+import 'package:employees/utils/extentions.dart';
 import 'package:flutter/material.dart';
 
 import '../model/Employee.dart';
@@ -61,6 +65,18 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      floatingActionButton: Utils.isDesktop()
+          ? FloatingActionButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const AddEmployeePage(),
+                  ),
+                );
+              },
+              child: const Icon(Icons.add),
+            )
+          : const SizedBox(),
     );
   }
 

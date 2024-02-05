@@ -19,11 +19,13 @@ class _EmployeeItemState extends State<EmployeeItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onItemClick(widget.employee),
+      onTap: () {
+        widget.onItemClick.call(widget.employee);
+      },
       child: Card(
         key: ValueKey(widget.employee.id ?? 1),
         elevation: 4,
-        color: const Color.fromARGB(255, 224, 223, 223),
+        // color: const Color.fromARGB(255, 224, 223, 223),
         margin: const EdgeInsets.symmetric(vertical: 10),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
