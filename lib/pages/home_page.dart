@@ -1,13 +1,11 @@
-import 'dart:io';
-
-import 'package:employees/pages/add_page.dart';
-import 'package:employees/pages/detail_page.dart';
-import 'package:employees/utils/extentions.dart';
 import 'package:flutter/material.dart';
 
 import '../model/Employee.dart';
+import '../utils/extentions.dart';
 import '../utils/fake_data.dart';
 import '../views/employee_item.dart';
+import 'add_page.dart';
+import 'detail_page.dart';
 
 class HomePage extends StatefulWidget {
   static const route = "/homePage";

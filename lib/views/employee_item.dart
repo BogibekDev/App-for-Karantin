@@ -47,7 +47,6 @@ class _EmployeeItemState extends State<EmployeeItem> {
                       widget.employee.name ?? "",
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                        color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
