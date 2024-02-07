@@ -93,7 +93,7 @@ class _DetailPageState extends State<DetailPage> {
                 Expanded(
                   child: MyListTile(
                     category: "Ma'lumoti",
-                    text: widget.employee.education ??"",
+                    text: widget.employee.education ?? "",
                   ),
                 ),
               ],
@@ -109,7 +109,8 @@ class _DetailPageState extends State<DetailPage> {
                 Expanded(
                   child: MyListTile(
                     category: "Tugatgan muassasasi",
-                    text: "${widget.employee.graduatedInstitution} ${widget.employee.graduatedYear}",
+                    text:
+                        "${widget.employee.graduatedInstitution} ${widget.employee.graduatedYear}",
                   ),
                 ),
               ],
@@ -129,6 +130,33 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
               ],
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+              child: Column(
+                children: [
+                  const Text("Nomidagi invintarlar"),
+                  ListView.builder(
+                    // scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: widget.employee.equipments?.length,
+                    itemBuilder: (context, position) => Card(
+                      color: Colors.amberAccent,
+                      child: Column(
+                        children: [
+                          Text("dfdsfsd"),
+                          Text("dfdsfsd"),
+                          Text("dfdsfsd"),
+                          Text("dfdsfsd"),
+                          Text("dfdsfsd"),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
