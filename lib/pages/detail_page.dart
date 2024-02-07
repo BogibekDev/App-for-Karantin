@@ -1,3 +1,4 @@
+import 'package:employees/utils/extentions.dart';
 import 'package:flutter/material.dart';
 
 import '../model/Employee.dart';
@@ -37,8 +38,7 @@ class _DetailPageState extends State<DetailPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   width: MediaQuery.sizeOf(context).width,
                   decoration: BoxDecoration(
-                    color: MediaQuery.of(context).platformBrightness ==
-                            Brightness.dark
+                    color: Utils.isDarkMode(context)
                         ? Colors.black38
                         : Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -135,24 +135,17 @@ class _DetailPageState extends State<DetailPage> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("Nomidagi invintarlar"),
+                  Text("Nomidagi inventarlar (${widget.employee.equipments?.length})"),
+                  const SizedBox(height: 10),
                   ListView.builder(
                     // scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: widget.employee.equipments?.length,
-                    itemBuilder: (context, position) => Card(
-                      color: Colors.amberAccent,
-                      child: Column(
-                        children: [
-                          Text("dfdsfsd"),
-                          Text("dfdsfsd"),
-                          Text("dfdsfsd"),
-                          Text("dfdsfsd"),
-                          Text("dfdsfsd"),
-                        ],
-                      ),
+                    itemBuilder: (context, position) => EqupmentItemWidget(
+                      equipment: widget.employee.equipments![position],
                     ),
                   ),
                 ],
@@ -160,6 +153,58 @@ class _DetailPageState extends State<DetailPage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class EqupmentItemWidget extends StatelessWidget {
+  const EqupmentItemWidget({
+    super.key,
+    required this.equipment,
+  });
+
+  final Equipment equipment;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Utils.isDarkMode(context) ? Colors.black38 : Colors.white,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: MyListTile(
+                  category: "Inventor nomi",
+                  text: "${equipment.name}",
+                ),
+              ),
+              Expanded(
+                child: MyListTile(
+                  category: "Invetor raqami",
+                  text: "${equipment.inventorNumber}",
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: MyListTile(
+                  category: "Inventor soni",
+                  text: "${equipment.count}",
+                ),
+              ),
+              Expanded(
+                child: MyListTile(
+                  category: "Invetor qiymati",
+                  text: "${equipment.value?.price()}",
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
