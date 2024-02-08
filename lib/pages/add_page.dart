@@ -1,3 +1,4 @@
+import 'package:employees/model/employee.dart';
 import 'package:employees/utils/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,6 +28,8 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
 
   var value = "";
 
+  final Employee employee = Employee();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +56,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
                         _selectImage();
                       },
                       child: const CircleAvatar(
-                        radius: 56,
+                        radius: 150,
                         foregroundImage: NetworkImage(
                             "https://www.indiafilings.com/learn/wp-content/uploads/2023/03/Can-a-single-person-own-a-firm-in-India.jpg"),
                       ),
@@ -311,11 +314,87 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
                   ],
                 ),
               ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  MaterialButton(
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    height: 50,
+                    color: Colors.red,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      "Cancel",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  MaterialButton(
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    height: 50,
+                    color: Colors.green,
+                    onPressed: () {
+                      _collectObject();
+                    },
+                    child: const Text(
+                      "Save",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _collectObject() {
+    if (_isNotEmpty()) {
+      employee
+        ..name = _nameController.text
+        ..birthday = _birthdayController.text
+        ..phoneNumber = _phoneNumberController.text
+        ..passport = _passportController.text
+        ..jshshir = _jshshsirController.text
+        ..education = _educationController.text
+        ..specialty = _specialtyController.text
+        ..graduatedInstitution = _grInstutController.text
+        ..graduatedYear = _grYearController.text
+        ..position = _positionController.text
+        ..department = _departmentController.text
+        ..startDateOfWork = _startDateController.text
+        ..numberOfOrder = _orderNumberController.text;
+    } else {
+      print("Maydonlarni to'diring");
+    }
+  }
+
+  bool _isNotEmpty() {
+    return _nameController.text.isNotEmpty &&
+        _birthdayController.text.isNotEmpty &&
+        _phoneNumberController.text.isNotEmpty &&
+        _passportController.text.isNotEmpty &&
+        _jshshsirController.text.isNotEmpty &&
+        _educationController.text.isNotEmpty &&
+        _specialtyController.text.isNotEmpty &&
+        _grInstutController.text.isNotEmpty &&
+        _grYearController.text.isNotEmpty &&
+        _positionController.text.isNotEmpty &&
+        _departmentController.text.isNotEmpty &&
+        _startDateController.text.isNotEmpty &&
+        _orderNumberController.text.isNotEmpty;
   }
 
   void _pickBirthday(BuildContext context) async {
