@@ -1,3 +1,5 @@
+
+
 import 'package:employees/model/employee.dart';
 import 'package:employees/utils/extentions.dart';
 import 'package:flutter/material.dart';
@@ -377,7 +379,7 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
         ..startDateOfWork = _startDateController.text
         ..numberOfOrder = _orderNumberController.text;
     } else {
-      print("Maydonlarni to'diring");
+      // print("Maydonlarni to'diring");
     }
   }
 

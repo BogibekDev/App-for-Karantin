@@ -1,11 +1,13 @@
 
 
 import '../model/Employee.dart';
+import '../model/equipment.dart';
+
 
 List<Employee> employees = [employee, employee2, employee3, employee4];
 
 Employee employee = Employee(
-  id: 1,
+  id: "1",
   name: "Bogibek Matyaqubov Otaxonovich",
   birthday: "12.12.1997",
   passport:"AA 1234567",
@@ -21,14 +23,15 @@ Employee employee = Employee(
   imageUrl:
       "https://www.indiafilings.com/learn/wp-content/uploads/2023/03/Can-a-single-person-own-a-firm-in-India.jpg",
   phoneNumber: "+998942344432",
-  equipments: [equipment, equipment, equipment],
+ 
 );
 
 
+List equipments = [equipment, equipment, equipment];
 
 
 Employee employee2 = Employee(
-  id: 2,
+  id: "2",
   name: "Azamatjon",
   birthday: "12.12.1997",
   education: "education",
@@ -38,10 +41,9 @@ Employee employee2 = Employee(
   imageUrl:
       "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
   phoneNumber: "phoneNumber",
-  equipments: [equipment, equipment, equipment],
 );
 Employee employee3 = Employee(
-  id: 3,
+  id: "3",
   name: "Qummijon",
   birthday: "12.12.1997",
   education: "education",
@@ -50,10 +52,9 @@ Employee employee3 = Employee(
   department: "department",
   imageUrl: "https://storage.needpix.com/rsynced_images/man-388104_1280.jpg",
   phoneNumber: "phoneNumber",
-  equipments: [equipment, equipment, equipment],
 );
 Employee employee4 = Employee(
-  id: 4,
+  id: "4",
   name: "Boburjon",
   birthday: "12.12.1997",
   education: "education",
@@ -63,7 +64,6 @@ Employee employee4 = Employee(
   imageUrl:
       "https://www.newvisiontheatres.com/wp-content/uploads/2023/06/Dwayne-Johnson.jpg",
   phoneNumber: "phoneNumber",
-  equipments: [equipment, equipment, equipment],
 );
 
 Equipment equipment = Equipment(
@@ -71,5 +71,6 @@ Equipment equipment = Equipment(
   name: "Macbook pro",
   count: 1,
   value: 20000000.0,
-  inventorNumber: "123343123"
+  inventorNumber: "123343123",
+  employeeID:"1"
 );

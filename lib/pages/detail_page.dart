@@ -1,13 +1,18 @@
-import 'package:employees/utils/extentions.dart';
+
 import 'package:flutter/material.dart';
 
 import '../model/Employee.dart';
+import '../model/equipment.dart';
+import '../utils/extentions.dart';
+import '../utils/fake_data.dart';
 import '../views/info_card_widget.dart';
 import '../views/my_list_tile.dart';
 
 class DetailPage extends StatefulWidget {
   final Employee employee;
   const DetailPage(this.employee, {super.key});
+
+
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -137,15 +142,15 @@ class _DetailPageState extends State<DetailPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Nomidagi inventarlar (${widget.employee.equipments?.length})"),
+                  Text("Nomidagi inventarlar (${equipments.length})"),
                   const SizedBox(height: 10),
                   ListView.builder(
                     // scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: widget.employee.equipments?.length,
+                    itemCount: equipments.length,
                     itemBuilder: (context, position) => EqupmentItemWidget(
-                      equipment: widget.employee.equipments![position],
+                      equipment: equipments[position],
                     ),
                   ),
                 ],

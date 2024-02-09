@@ -1,4 +1,7 @@
+import 'package:employees/data/remote/api_service.dart';
+import 'package:employees/data/repository/home_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 import '../model/Employee.dart';
 import '../utils/extentions.dart';
@@ -19,9 +22,16 @@ class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
   List<Employee> result = [];
 
+  final logger = Logger();
+  final ApiService _apiService = ApiService.create();
+
   @override
   void initState() {
     result = employees;
+    final HomeRepository repository = HomeRepository(_apiService);
+    repository.getAllEmployees().then((responce) => {
+      logger.d(responce)
+    });
     super.initState();
   }
 
