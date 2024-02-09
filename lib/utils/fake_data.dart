@@ -1,7 +1,8 @@
 
 
-import '../model/Employee.dart';
+
 import '../model/equipment.dart';
+import '../model/ishchi.dart';
 
 
 List<Employee> employees = [employee, employee2, employee3, employee4];
@@ -67,9 +68,9 @@ Employee employee4 = Employee(
 );
 
 Equipment equipment = Equipment(
-  id: 1,
+  id: "1",
   name: "Macbook pro",
-  count: 1,
+  count: "1",
   value: 20000000.0,
   inventorNumber: "123343123",
   employeeID:"1"

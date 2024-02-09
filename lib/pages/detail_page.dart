@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 
-import '../model/Employee.dart';
+
 import '../model/equipment.dart';
+import '../model/ishchi.dart';
 import '../utils/extentions.dart';
 import '../utils/fake_data.dart';
 import '../views/info_card_widget.dart';

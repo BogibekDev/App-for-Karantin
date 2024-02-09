@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'employee.dart';
+part of 'ishchi.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -22,7 +22,7 @@ Employee _$EmployeeFromJson(Map<String, dynamic> json) => Employee(
       department: json['department'] as String?,
       imageUrl: json['imageUrl'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
-      ponishmentCount: json['ponishmentCount'] as int? ?? 0,
+      ponishmentCount: json['ponishmentCount'] as String? ?? "0",
     );
 
 Map<String, dynamic> _$EmployeeToJson(Employee instance) => <String, dynamic>{

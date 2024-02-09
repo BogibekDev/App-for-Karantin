@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../model/Employee.dart';
+
+import '../model/ishchi.dart';
 import '../utils/res_colors.dart';
 
 class InfoCardWidget extends StatelessWidget {

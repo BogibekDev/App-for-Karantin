@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../model/Employee.dart';
+
+import '../model/ishchi.dart';
+
 
 class EmployeeItem extends StatefulWidget {
   final Employee employee;

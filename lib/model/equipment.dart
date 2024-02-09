@@ -4,9 +4,9 @@ part 'equipment.g.dart';
 
 @JsonSerializable()
 class Equipment {
-  int? id;
+  String? id;
   String? name;
-  int? count;
+  String? count;
   double? value;
   String? inventorNumber;
   String? employeeID;

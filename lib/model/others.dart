@@ -4,9 +4,9 @@ part 'others.g.dart';
 
 @JsonSerializable()
 class Others {
-  int? created;
-  int? updated;
-  int? deleted;
+  String? created;
+  String? updated;
+  String? deleted;
 
   Others({
     required this.created,

@@ -1,6 +1,4 @@
-
-import 'package:employees/model/employee.dart';
-
+import '../../model/ishchi.dart';
 import '../remote/api_service.dart';
 
 class HomeRepository {

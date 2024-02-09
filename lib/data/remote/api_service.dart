@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../model/employee.dart';
+import '../../model/ishchi.dart';
 import '../../model/equipment.dart';
 import '../../model/others.dart';
 

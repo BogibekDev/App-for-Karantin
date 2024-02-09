@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'employee.g.dart';
+part 'ishchi.g.dart';
 
 @JsonSerializable()
 class Employee {
@@ -19,7 +19,7 @@ class Employee {
   String? position;
   String? startDateOfWork;
   String? numberOfOrder;
-  int? ponishmentCount;
+  String? ponishmentCount;
 
   Employee({
     this.id,
@@ -37,7 +37,7 @@ class Employee {
     this.department,
     this.imageUrl,
     this.phoneNumber,
-    this.ponishmentCount = 0,
+    this.ponishmentCount = "0",
   });
 
   factory Employee.fromJson(Map<String, dynamic> json) =>

@@ -3,7 +3,7 @@ import 'package:employees/data/repository/home_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
-import '../model/Employee.dart';
+import '../model/ishchi.dart';
 import '../utils/extentions.dart';
 import '../utils/fake_data.dart';
 import '../views/employee_item.dart';
@@ -30,8 +30,10 @@ class _HomePageState extends State<HomePage> {
     result = employees;
     final HomeRepository repository = HomeRepository(_apiService);
     repository.getAllEmployees().then((responce) => {
-      logger.d(responce)
-    });
+          responce.forEach((element) {
+            logger.d(element.name);
+          })
+        });
     super.initState();
   }
 

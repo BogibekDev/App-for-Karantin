@@ -1,6 +1,6 @@
 
 
-import 'package:employees/model/employee.dart';
+import 'package:employees/model/ishchi.dart';
 import 'package:employees/utils/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -7,9 +7,9 @@ part of 'equipment.dart';
 // **************************************************************************
 
 Equipment _$EquipmentFromJson(Map<String, dynamic> json) => Equipment(
-      id: json['id'] as int?,
+      id: json['id'] as String?,
       name: json['name'] as String?,
-      count: json['count'] as int?,
+      count: json['count'] as String?,
       value: (json['value'] as num?)?.toDouble(),
       inventorNumber: json['inventorNumber'] as String?,
       employeeID: json['employeeID'] as String?,
