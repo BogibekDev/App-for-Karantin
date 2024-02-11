@@ -19,10 +19,16 @@ class _ApiService implements ApiService {
   String? baseUrl;
 
   @override
-  Future<List<Employee>> getAllEmployees(
-      {String sheetID = 'e6wmrpwy5bljy'}) async {
+  Future<List<Employee>> getAllEmployees({
+    String sheetID = 'e6wmrpwy5bljy',
+    int limit = 20,
+    int offset = 0,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'limit': limit,
+      r'offset': offset,
+    };
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result =

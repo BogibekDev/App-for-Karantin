@@ -25,8 +25,11 @@ abstract class ApiService {
   //apiService
 
   @GET('{sheetID}/')
-  Future<List<Employee>> getAllEmployees({
+  Future<List<Employee>> getAllEmployees(
+    {
     @Path('sheetID') String sheetID = 'e6wmrpwy5bljy',
+    @Query("limit") int limit = 20,
+    @Query("offset") int offset = 0
   });
 
   @GET('{sheetID}/search')
