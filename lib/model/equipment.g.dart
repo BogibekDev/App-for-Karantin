@@ -10,7 +10,7 @@ Equipment _$EquipmentFromJson(Map<String, dynamic> json) => Equipment(
       id: json['id'] as String?,
       name: json['name'] as String?,
       count: json['count'] as String?,
-      value: (json['value'] as num?)?.toDouble(),
+      value: json['value'] as String?,
       inventorNumber: json['inventorNumber'] as String?,
       employeeID: json['employeeID'] as String?,
     );

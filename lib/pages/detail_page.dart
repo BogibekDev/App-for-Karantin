@@ -1,11 +1,11 @@
-
+import 'package:employees/data/repository/detail_repository.dart';
+import 'package:employees/views/loading_widget.dart';
 import 'package:flutter/material.dart';
 
-
+import '../data/remote/api_service.dart';
 import '../model/equipment.dart';
 import '../model/ishchi.dart';
 import '../utils/extentions.dart';
-import '../utils/fake_data.dart';
 import '../views/info_card_widget.dart';
 import '../views/my_list_tile.dart';
 
@@ -13,13 +13,36 @@ class DetailPage extends StatefulWidget {
   final Employee employee;
   const DetailPage(this.employee, {super.key});
 
-
-
   @override
   State<DetailPage> createState() => _DetailPageState();
 }
 
 class _DetailPageState extends State<DetailPage> {
+  List<Equipment> equipments = [];
+  bool isLoading = true;
+  final ApiService _apiService = ApiService.create();
+  late final DetailRepository repository = DetailRepository(_apiService);
+
+  @override
+  void initState() {
+    _getEqipments(widget.employee.id ?? "1");
+    super.initState();
+  }
+
+  void _getEqipments(String id) async {
+    repository
+        .getAllEmployees(int.parse(id), sheetID: "irrh6nkxv54i5")
+        .then((respoonse) => _setResponse(respoonse));
+  }
+
+  void _setResponse(List<Equipment> response) {
+    print(response);
+    setState(() {
+      equipments.addAll(response);
+      isLoading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -145,15 +168,20 @@ class _DetailPageState extends State<DetailPage> {
                 children: [
                   Text("Nomidagi inventarlar (${equipments.length})"),
                   const SizedBox(height: 10),
-                  ListView.builder(
-                    // scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: equipments.length,
-                    itemBuilder: (context, position) => EqupmentItemWidget(
-                      equipment: equipments[position],
-                    ),
-                  ),
+                  isLoading
+                      ? const LoadingWidget()
+                      : equipments.isEmpty
+                          ? const Center(child: Text("Inventar yo'q"))
+                          : ListView.builder(
+                              // scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: equipments.length,
+                              itemBuilder: (context, position) =>
+                                  EqupmentItemWidget(
+                                equipment: equipments[position],
+                              ),
+                            ),
                 ],
               ),
             ),
@@ -205,7 +233,7 @@ class EqupmentItemWidget extends StatelessWidget {
               Expanded(
                 child: MyListTile(
                   category: "Invetor qiymati",
-                  text: "${equipment.value?.price()}",
+                  text: double.parse(equipment.value ?? "1").price(),
                 ),
               ),
             ],

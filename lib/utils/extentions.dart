@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Utils {
   static bool isDesktop() {
@@ -35,6 +36,8 @@ final educations = [
   "Tugallanmagan Oliy",
   "Oliy",
 ];
+
+const apiID = "irrh6nkxv54i5";
 
 final departments = [
   "Moliya",

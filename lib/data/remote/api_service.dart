@@ -5,6 +5,7 @@ import 'package:retrofit/retrofit.dart';
 import '../../model/ishchi.dart';
 import '../../model/equipment.dart';
 import '../../model/others.dart';
+import '../../utils/extentions.dart';
 
 
 part 'api_service.g.dart';
@@ -27,28 +28,28 @@ abstract class ApiService {
   @GET('{sheetID}/')
   Future<List<Employee>> getAllEmployees(
     {
-    @Path('sheetID') String sheetID = 'e6wmrpwy5bljy',
-    @Query("limit") int limit = 20,
+    @Path('sheetID') String sheetID = apiID,
+    //@Query("limit") int limit = 20,
     @Query("offset") int offset = 0
   });
 
   @GET('{sheetID}/search')
   Future<List<Equipment>> getEquipmentsByEmployeeID(
-    @Query('employeeID') String employeeID, {
-    @Path('sheetID') String sheetID = 'e6wmrpwy5bljy',
+    @Query('employeeID')int employeeID, {
+    @Path('sheetID') String sheetID = apiID,
     @Query('sheet') String sheet = 'Equipment',
   });
 
   @POST('{sheetID}/')
   Future<Others> addEmployee(
     @Body() Employee employee, {
-    @Path('sheetID') String sheetID = 'e6wmrpwy5bljy',
+    @Path('sheetID') String sheetID = apiID,
   });
 
   @POST('{sheetID}/')
   Future<Others> addEquipment(
     @Body() Equipment equipment, {
-    @Path('sheetID') String sheetID = 'e6wmrpwy5bljy',
+    @Path('sheetID') String sheetID = apiID,
     @Query('sheet') String sheet = 'Equipment',
   });
 }

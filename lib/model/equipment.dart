@@ -7,7 +7,7 @@ class Equipment {
   String? id;
   String? name;
   String? count;
-  double? value;
+  String? value;
   String? inventorNumber;
   String? employeeID;
 

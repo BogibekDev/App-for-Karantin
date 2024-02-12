@@ -1,5 +1,5 @@
-
-
+import 'package:employees/data/remote/api_service.dart';
+import 'package:employees/data/repository/add_repository.dart';
 import 'package:employees/model/ishchi.dart';
 import 'package:employees/utils/extentions.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +28,11 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
   final TextEditingController _positionController = TextEditingController();
   final TextEditingController _departmentController = TextEditingController();
 
-  var value = "";
+  bool isLoading = false;
 
   final Employee employee = Employee();
+  final ApiService _apiService = ApiService.create();
+  late AddRepository repository = AddRepository(_apiService);
 
   @override
   Widget build(BuildContext context) {
@@ -344,14 +346,16 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
                     onPressed: () {
                       _collectObject();
                     },
-                    child: const Text(
-                      "Save",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                    child: isLoading
+                        ? const CircularProgressIndicator()
+                        : const Text(
+                            "Save",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                   ),
                 ],
               )
@@ -360,6 +364,15 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
         ),
       ),
     );
+  }
+
+  void _saveToServer() async {
+    isLoading = true;
+    repository.addEmployee(employee).then((value) => _goHome());
+  }
+
+  void _goHome() {
+    Navigator.pop(context);
   }
 
   void _collectObject() {
@@ -378,8 +391,10 @@ class _AddEmployeePageState extends State<AddEmployeePage> {
         ..department = _departmentController.text
         ..startDateOfWork = _startDateController.text
         ..numberOfOrder = _orderNumberController.text;
+
+        _saveToServer();
     } else {
-      // print("Maydonlarni to'diring");
+      print("Maydonlarni to'diring");
     }
   }
 

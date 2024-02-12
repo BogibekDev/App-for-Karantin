@@ -13,7 +13,7 @@ class _LoadingWidgetState extends State<LoadingWidget> {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: 200,
+        width: 130,
         child: Lottie.asset('assets/lotties/loading2.json'),),
     );
   }

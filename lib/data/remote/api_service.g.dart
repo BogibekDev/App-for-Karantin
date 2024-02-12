@@ -20,15 +20,11 @@ class _ApiService implements ApiService {
 
   @override
   Future<List<Employee>> getAllEmployees({
-    String sheetID = 'e6wmrpwy5bljy',
-    int limit = 20,
+    String sheetID = apiID,
     int offset = 0,
   }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'limit': limit,
-      r'offset': offset,
-    };
+    final queryParameters = <String, dynamic>{r'offset': offset};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result =
@@ -56,8 +52,8 @@ class _ApiService implements ApiService {
 
   @override
   Future<List<Equipment>> getEquipmentsByEmployeeID(
-    String employeeID, {
-    String sheetID = 'e6wmrpwy5bljy',
+    int employeeID, {
+    String sheetID = apiID,
     String sheet = 'Equipment',
   }) async {
     const _extra = <String, dynamic>{};
@@ -93,7 +89,7 @@ class _ApiService implements ApiService {
   @override
   Future<Others> addEmployee(
     Employee employee, {
-    String sheetID = 'e6wmrpwy5bljy',
+    String sheetID = apiID,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -124,7 +120,7 @@ class _ApiService implements ApiService {
   @override
   Future<Others> addEquipment(
     Equipment equipment, {
-    String sheetID = 'e6wmrpwy5bljy',
+    String sheetID = apiID,
     String sheet = 'Equipment',
   }) async {
     const _extra = <String, dynamic>{};

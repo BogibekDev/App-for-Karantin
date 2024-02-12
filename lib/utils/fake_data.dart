@@ -71,7 +71,7 @@ Equipment equipment = Equipment(
   id: "1",
   name: "Macbook pro",
   count: "1",
-  value: 20000000.0,
+  value: "20000000.0",
   inventorNumber: "123343123",
   employeeID:"1"
 );

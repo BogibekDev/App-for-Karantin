@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
       ..addListener(() {
         _loadMore();
       });
-    
+
     super.initState();
   }
 
@@ -45,17 +45,22 @@ class _HomePageState extends State<HomePage> {
     isLoadMore = false;
     isFirstLoading = true;
     page++;
-    repository.getAllEmployees(page: page).then((res) => {_setResult(res)});
+    repository.getAllEmployees(page: page,sheetID: "irrh6nkxv54i5").then((res) => {_setResult(res)});
   }
 
   void _loadMore() async {
-    if (!isLoadMore && !isFirstLoading && _controller.position.extentTotal > page*20+4) {
+    if (!isFirstLoading && isLastItem()) {
       setState(() {
         isLoadMore = true;
+        page++;
       });
-      page++;
       repository.getAllEmployees(page: page).then((res) => {_setResult(res)});
     }
+  }
+
+  bool isLastItem() {
+    return _controller.position.pixels >=
+        _controller.position.maxScrollExtent - 100;
   }
 
   void _setResult(List<Employee> response) {
@@ -90,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                 ? const LoadingWidget()
                 : Expanded(
                     child: ListView.builder(
-                      // controller: _controller,
+                      //controller: _controller,
                       itemCount: result.length,
                       itemBuilder: (context, index) => EmployeeItem(
                         employee: result[index],
