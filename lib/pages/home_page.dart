@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../model/ishchi.dart';
 import '../utils/extentions.dart';
-import '../utils/fake_data.dart';
 import '../views/employee_item.dart';
 import '../views/loading_widget.dart';
 import 'add_page.dart';
@@ -21,6 +20,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
   List<Employee> result = [];
+  List<Employee> resultAll = [];
+  
   bool isFirstLoading = true;
   bool isLoadMore = false;
 
@@ -68,6 +69,7 @@ class _HomePageState extends State<HomePage> {
       result.addAll(response);
       isFirstLoading = false;
       isLoadMore = false;
+      resultAll = result;
     });
   }
 
@@ -137,9 +139,9 @@ class _HomePageState extends State<HomePage> {
 
   void _filter(String value) {
     if (value.isEmpty) {
-      result = employees;
+      result = resultAll;
     } else {
-      result = employees
+      result = resultAll
           .where((employee) =>
               employee.name!.toLowerCase().contains(value.toLowerCase()) ||
               employee.phoneNumber!.toLowerCase().contains(value.toLowerCase()))
